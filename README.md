@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Modal - React Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Author](https://img.shields.io/badge/Author-hisarandre-")
+![GitHub repo size](https://img.shields.io/github/repo-size/hisarandre/my-modal-react-component)
+![GitHub top language](https://img.shields.io/github/languages/top/hisarandre/my-modal-react-component)
+![GitHub language count](https://img.shields.io/github/languages/count/hisarandre/my-modal-react-component)
 
-## Available Scripts
+## General information
 
-In the project directory, you can run:
+An easy-friendly Modal component for React.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- A text editor`
+- [Node.js < v.16](https://nodejs.org/en/)
+- [Git](https://git-scm.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Modal Component
 
-### `npm test`
+- `message` : {string} the message in the modal
+- `modalColor`: {string} the color value of the modal
+- `bgColor`: {string} the color value of the background
+- `btnColor`: {string} the color value of the close button
+- `size`: {"sm", "md", "lg", "fit"} correspond to the modal width, padding and button size
+- `corner`: {string} correspond to the border-radius of the modal
+- `justify`: {string} justify-content of the text inside the modal
+- `open`: {boolean} show the modal if set as true
+- `close`: {function} a function that should be used with useState to change `open` as true or false
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Exemple
 
-### `npm run build`
+```javascript
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  function handleOpenModal() {
+    setIsOpen(true);
+  }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  return (
+    <>
+      <button type="button" onClick={handleOpenModal}>
+        Close
+      </button>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      <Modal
+        message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur mattis lacus quis metus tempus aliquam. Cras a nulla aliquet, sodales leo vel, molestie ex. Suspendisse ornare sapien nec efficitur tincidunt. Sed dignissim felis in tortor hendrerit viverra."
+        open={isOpen}
+        close={() => setIsOpen(!isOpen)}
+      />
+    </>
+  );
+};
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
+```
